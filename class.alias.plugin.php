@@ -35,7 +35,7 @@ class AliasPlugin extends Gdn_Plugin {
          $UserName = $User->Name;
          $AliasList = unserialize($UserMeta['Alias']);
          
-         echo '<dt class="Alias">Alias</dt>';
+         echo '<dt class="Alias">'.T('Alias').'</dt>';
          foreach($AliasList as $name => $value) {
             if($UserName != $value) {
                echo '<dd class="Alias">'.$value.'</dd>';
