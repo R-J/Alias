@@ -8,7 +8,7 @@
 $PluginInfo['Alias'] = array(
    'Name' => 'Alias',
    'Description' => "Keeps track of username changes and shows a list in profile of former names (only useful when \$Configuration['Garden']['Profile']['EditUsernames'] is set to TRUE)",
-   'Version' => '0.1',
+   'Version' => '0.3',
    'Author' => 'Robin',
    'License' => 'LGPL',
    'MobileFriendly' => TRUE,
@@ -30,16 +30,19 @@ class AliasPlugin extends Gdn_Plugin {
       // Get UserMeta for profile user
       $UserMeta = Gdn::UserModel()->GetMeta($UserID, 'Alias');
       
-      // only proceed if Alias info exists
-      if(sizeof($UserMeta['Alias']) == 1) {
-         $UserName = $User->Name;
-         $AliasList = unserialize($UserMeta['Alias']);
-         
-         echo '<dt class="Alias">'.T('Alias').'</dt>';
-         foreach($AliasList as $name => $value) {
-            if($UserName != $value) {
-               echo '<dd class="Alias">'.$value.'</dd>';
-            }
+      $UserName = $User->Name;
+      $AliasList = unserialize($UserMeta['Alias']);
+
+      // only proceed if Alias info exists and is relevant
+      if((sizeof($UserMeta['Alias']) != 1) || ($AliasList == array($UserName))) {
+         return;
+      }
+      
+      // print out alias info
+      echo '<dt class="Alias">'.T('Alias').'</dt>';
+      foreach($AliasList as $name => $value) {
+         if($UserName != $value) {
+            echo '<dd class="Alias">'.$value.'</dd>';
          }
       }
    } // End of  UserInfoModule_OnBasicInfo_Handler
