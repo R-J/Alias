@@ -8,7 +8,7 @@
 $PluginInfo['Alias'] = array(
    'Name' => 'Alias',
    'Description' => "Keeps track of username changes and shows a list in profile of former names (only useful when \$Configuration['Garden']['Profile']['EditUsernames'] is set to TRUE)",
-   'Version' => '0.3',
+   'Version' => '0.4',
    'Author' => 'Robin',
    'License' => 'LGPL',
    'MobileFriendly' => TRUE,
@@ -62,7 +62,7 @@ class AliasPlugin extends Gdn_Plugin {
       $UserModel = Gdn::UserModel();
       // Get alias list
       $UserMeta = $UserModel->GetMeta($UserID, 'Alias');
-      $UserAlias = $UserMeta['Alias']);
+      $UserAlias = $UserMeta['Alias'];
       $OldAliasList = unserialize($UserAlias);
       $NewAliasList = $OldAliasList;
       // Append current user
