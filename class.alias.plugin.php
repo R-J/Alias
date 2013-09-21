@@ -61,7 +61,9 @@ class AliasPlugin extends Gdn_Plugin {
       // Create UserModel to get access to GetMeta and SetMeta
       $UserModel = Gdn::UserModel();
       // Get alias list
-      $OldAliasList = unserialize($UserModel->GetMeta($UserID, 'Alias')['Alias']);
+      $UserMeta = $UserModel->GetMeta($UserID, 'Alias');
+      $UserAlias = $UserMeta['Alias']);
+      $OldAliasList = unserialize($UserAlias);
       $NewAliasList = $OldAliasList;
       // Append current user
       $NewAliasList[] = $UserName;
