@@ -39,11 +39,13 @@ class AliasPlugin extends Gdn_Plugin {
       }
       
       // print out alias info
-      echo '<dt class="Alias">'.T('Alias').'</dt>';
-      foreach($AliasList as $name => $value) {
+      if(!empty($AliasList)) {
+        echo '<dt class="Alias">'.T('Alias').'</dt>';
+        foreach($AliasList as $name => $value) {
          if($UserName != $value) {
-            echo '<dd class="Alias">'.$value.'</dd>';
+          echo ' <dd class="Alias">'.$value.'</dd>';
          }
+        }
       }
    } // End of  UserInfoModule_OnBasicInfo_Handler
    
