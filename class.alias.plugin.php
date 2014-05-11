@@ -8,7 +8,7 @@
 $PluginInfo['Alias'] = array(
    'Name' => 'Alias',
    'Description' => "Keeps track of username changes and shows a list in profile of former names (only useful when \$Configuration['Garden']['Profile']['EditUsernames'] is set to TRUE)",
-   'Version' => '0.4',
+   'Version' => '0.5',
    'Author' => 'Robin',
    'License' => 'LGPL',
    'MobileFriendly' => TRUE,
